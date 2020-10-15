@@ -401,6 +401,24 @@ module.exports = function (webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
+            // Adds support for CoffeeScript
+            {
+              test: /\.coffee$/,
+              loader: 'coffee-loader',
+              options: {
+                bare: false,
+                transpile: {
+                  presets: [
+                    require.resolve('babel-preset-react-app'),
+                    {
+                      runtime: semver.gte(react.version, '17.0.0-alpha.0')
+                        ? 'automatic'
+                        : 'classic',
+                    },
+                  ],
+                },
+              },
+            },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {

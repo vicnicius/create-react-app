@@ -405,6 +405,11 @@ module.exports = function (
     );
   }
   console.log();
+  console.log(
+    chalk.cyan(
+      'This special version of CRA comes with CoffeeScript support.'
+    )
+  );
   console.log('Happy hacking!');
 };
 
